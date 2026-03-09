@@ -1,0 +1,44 @@
+# Executables
+*.out
+*.exe
+*.app
+*.elf
+*.bin
+
+# Object files
+*.o
+*.obj
+
+# Static / dynamic libraries
+*.a
+*.so
+*.dll
+*.dylib
+
+# Build folders
+build/
+bin/
+dist/
+
+# Debug / profiling
+*.gdb
+*.dSYM/
+
+# Make artifacts
+Makefile.old
+*.make
+
+# Logs
+*.log
+
+# VSCode
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# WSL / temporary files
+*~
+*.swp
+*.swo
