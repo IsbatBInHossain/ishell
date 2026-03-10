@@ -18,7 +18,9 @@ void execute_command(Command cmd)
   }
   if (pid == 0)
   {
-    /* Chile process */
+    /* Child process */
+    apply_redirection(cmd);
+
     cmd.args[cmd.argc] = NULL;
     execvp(cmd.args[0], cmd.args);
 
