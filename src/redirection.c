@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include "shell.h"
 
-void apply_redirection(Command cmd)
+void apply_redirections(Command cmd)
 {
   /* stdin redirection */
   if (cmd.redir_input)

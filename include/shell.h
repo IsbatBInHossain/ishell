@@ -38,5 +38,6 @@ void repl();
 int lex(char *, char **, int);
 Pipeline parse(char **, int);
 int run_builtin(Command);
+void apply_redirections(Command);
 void execute_command(Command);
-void apply_redirection(Command);
+void execute_pipeline(Pipeline *);

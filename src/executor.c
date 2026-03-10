@@ -19,7 +19,7 @@ void execute_command(Command cmd)
   if (pid == 0)
   {
     /* Child process */
-    apply_redirection(cmd);
+    apply_redirections(cmd);
 
     cmd.args[cmd.argc] = NULL;
     execvp(cmd.args[0], cmd.args);

@@ -33,6 +33,6 @@ void repl()
 
     int n_token = lex(input, tokens, MAX_ARGS + MAX_PIPES);
     Pipeline pipeline = parse(tokens, n_token);
-    execute_command(pipeline.commands[0]);
+    execute_pipeline(&pipeline);
   }
 }
