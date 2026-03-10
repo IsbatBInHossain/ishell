@@ -5,9 +5,9 @@
 #include "shell.h"
 
 // Forward declarations so the table can reference them
-static void echo_func(Command cmnd);
-static void type_func(Command cmnd);
-static void exit_func(Command cmnd);
+static void echo_func(Command cmd);
+static void type_func(Command cmd);
+static void exit_func(Command cmd);
 
 static builtin_entry BUILTINS[] = {
     {"echo", echo_func},
@@ -15,47 +15,47 @@ static builtin_entry BUILTINS[] = {
     {"exit", exit_func},
     {NULL, NULL}};
 
-int run_builtin(Command cmnd)
+int run_builtin(Command cmd)
 {
-  char *name = cmnd.args[0];
+  char *name = cmd.args[0];
   for (int i = 0; BUILTINS[i].name != NULL; i++)
   {
     if (strcmp(name, BUILTINS[i].name) == 0)
     {
-      BUILTINS[i].fn(cmnd);
+      BUILTINS[i].fn(cmd);
       return 1;
     }
   }
   return 0;
 }
 
-void echo_func(Command cmnd)
+void echo_func(Command cmd)
 {
-  if (cmnd.argc == 1)
+  if (cmd.argc == 1)
   {
     printf("\n");
     return;
   }
-  for (int i = 1; i < cmnd.argc; i++)
+  for (int i = 1; i < cmd.argc; i++)
   {
-    printf("%s", cmnd.args[i]);
-    if (i < cmnd.argc - 1)
+    printf("%s", cmd.args[i]);
+    if (i < cmd.argc - 1)
       printf(" ");
   }
   printf("\n");
 }
 
-void type_func(Command cmnd)
+void type_func(Command cmd)
 {
-  printf("%s is a builtin\n", cmnd.args[0]);
+  printf("%s is a builtin\n", cmd.args[0]);
 }
 
-void exit_func(Command cmnd)
+void exit_func(Command cmd)
 {
   int status = 0;
-  if (cmnd.argc > 1)
+  if (cmd.argc > 1)
   {
-    status = atoi(cmnd.args[1]);
+    status = atoi(cmd.args[1]);
   }
   exit(status);
 }

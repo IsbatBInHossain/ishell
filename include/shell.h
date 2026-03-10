@@ -25,7 +25,7 @@ typedef struct
 } Pipeline;
 
 /* builtin */
-typedef void (*builtin_fn)(Command cmnd);
+typedef void (*builtin_fn)(Command cmd);
 
 typedef struct
 {
@@ -38,3 +38,4 @@ void repl();
 int lex(char *, char **, int);
 Pipeline parse(char **, int);
 int run_builtin(Command);
+void execute_command(Command);
