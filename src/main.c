@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "shell.h"
 
 int main()
@@ -21,6 +22,13 @@ void repl()
       printf("\n");
       break;
     }
-    printf("%s", input);
+
+    input[strcspn(input, "\n")] = '\0'; // Replace the trailing newline
+    if (input[0] == '\0')
+    {
+      continue;
+    }
+
+    printf("Input is: %s\n", input);
   }
 }
