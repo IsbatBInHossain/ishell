@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "shell.h"
 
 int main()
@@ -11,7 +12,7 @@ int main()
 void repl()
 {
   char input[MAX_INPUT];
-  char *tokens[MAX_TOKENS];
+  char *tokens[MAX_ARGS * MAX_PIPES];
 
   while (1)
   {
@@ -30,7 +31,7 @@ void repl()
       continue;
     }
 
-    int token_size = lex(input, tokens, MAX_TOKENS);
-    printf("Token size: %d\n", token_size);
-  }
+    int n_token = lex(input, tokens, MAX_ARGS + MAX_PIPES);
+    Pipeline pipeline = parse(tokens, n_token);
+    }
 }
