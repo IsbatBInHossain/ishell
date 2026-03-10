@@ -24,7 +24,17 @@ typedef struct
   int num_commands;
 } Pipeline;
 
+/* builtin */
+typedef void (*builtin_fn)(Command cmnd);
+
+typedef struct
+{
+  const char *name;
+  builtin_fn fn;
+} builtin_entry;
+
 /* prototypes */
 void repl();
 int lex(char *, char **, int);
 Pipeline parse(char **, int);
+int run_builtin(Command);
