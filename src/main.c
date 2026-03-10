@@ -11,6 +11,7 @@ int main()
 void repl()
 {
   char input[MAX_INPUT];
+  char *tokens[MAX_TOKENS];
 
   while (1)
   {
@@ -29,6 +30,7 @@ void repl()
       continue;
     }
 
-    printf("Input is: %s\n", input);
+    int token_size = lex(input, tokens, MAX_TOKENS);
+    printf("Token size: %d\n", token_size);
   }
 }
